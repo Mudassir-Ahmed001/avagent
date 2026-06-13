@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import {
   Activity,
   Shield,
@@ -25,6 +26,8 @@ export default function DashboardContent({
   firstName,
   email,
 }: DashboardContentProps) {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Dashboard Nav */}
@@ -130,7 +133,10 @@ export default function DashboardContent({
               name, personality, and knowledge — then deploy it to your website
               with a single line of code.
             </p>
-            <button className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-all duration-200 active:scale-95 gap-2">
+            <button
+              onClick={() => router.push("/create-agent")}
+              className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-all duration-200 active:scale-95 gap-2"
+            >
               Create Agent <ArrowRight className="h-4 w-4" />
             </button>
           </div>
