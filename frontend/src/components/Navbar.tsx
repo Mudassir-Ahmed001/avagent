@@ -2,8 +2,11 @@
 
 import React from "react";
 import { Activity, Shield } from "lucide-react";
+import { SignInButton, SignUpButton, UserButton, useAuth } from "@clerk/nextjs";
 
 export default function Navbar() {
+  const { isSignedIn, isLoaded } = useAuth();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8">
@@ -48,20 +51,41 @@ export default function Navbar() {
           </a>
         </nav>
 
-        {/* CTA Actions */}
-        <div className="flex items-center gap-4">
-          <a
-            href="#sandbox"
-            className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Try Sandbox
-          </a>
-          <a
-            href="#dashboard"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-all duration-200 active:scale-95"
-          >
-            Launch Console
-          </a>
+        {/* Auth Actions */}
+        <div className="flex items-center gap-3">
+          {/* Show skeleton while Clerk loads to prevent layout shift */}
+          {!isLoaded && (
+            <div className="h-10 w-28 animate-pulse rounded-full bg-secondary/60" />
+          )}
+
+          {/* When signed OUT — show Sign In + Get Started */}
+          {isLoaded && !isSignedIn && (
+            <>
+              <SignInButton mode="modal">
+                <button className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
+                  Sign In
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-all duration-200 active:scale-95 cursor-pointer">
+                  Get Started
+                </button>
+              </SignUpButton>
+            </>
+          )}
+
+          {/* When signed IN — show Launch Console + Avatar */}
+          {isLoaded && isSignedIn && (
+            <>
+              <a
+                href="/dashboard"
+                className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-all duration-200 active:scale-95"
+              >
+                Launch Console
+              </a>
+              <UserButton />
+            </>
+          )}
         </div>
       </div>
     </header>
