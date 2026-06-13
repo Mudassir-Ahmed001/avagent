@@ -1,0 +1,69 @@
+"use client";
+
+import React from "react";
+import { Activity, Shield } from "lucide-react";
+
+export default function Navbar() {
+  return (
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 sm:px-8">
+        {/* Logo */}
+        <div className="flex items-center gap-2">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20 border border-primary/30 text-primary">
+            <Activity className="h-5 w-5 animate-pulse" />
+          </div>
+          <span className="text-xl font-bold tracking-tight text-foreground">
+            Axiom<span className="text-primary font-light">.AI</span>
+          </span>
+          <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-secondary/80 border border-border px-2.5 py-0.5 text-2xs font-semibold text-secondary-foreground">
+            <Shield className="h-3 w-3 text-primary" /> Healthcare
+          </span>
+        </div>
+
+        {/* Navigation Items */}
+        <nav className="hidden md:flex items-center gap-8">
+          <a
+            href="#features"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Features
+          </a>
+          <a
+            href="#sandbox"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Agent Sandbox
+          </a>
+          <a
+            href="#dashboard"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Hospital Dashboard
+          </a>
+          <a
+            href="#workflow"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            How it Works
+          </a>
+        </nav>
+
+        {/* CTA Actions */}
+        <div className="flex items-center gap-4">
+          <a
+            href="#sandbox"
+            className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Try Sandbox
+          </a>
+          <a
+            href="#dashboard"
+            className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-all duration-200 active:scale-95"
+          >
+            Launch Console
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+}

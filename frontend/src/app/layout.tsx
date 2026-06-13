@@ -1,22 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Lora, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-
-const fontSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
-});
-
-const fontSerif = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
-});
-
-const fontMono = IBM_Plex_Mono({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-ibm-plex-mono",
-});
 
 export const metadata: Metadata = {
   title: "Axiom",
@@ -30,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         {children}
       </body>
     </html>

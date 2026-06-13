@@ -34,7 +34,9 @@
   --sidebar-accent: oklch(0.24 0.02 143);
   --sidebar-accent-foreground: oklch(0.96 0.01 130);
   --sidebar-border: oklch(0.3 0.02 143);
-  --sidebar-ring: oklch(0.76 0.08 143);
+  --font-plus-jakarta-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-lora: Lora, Georgia, serif;
+  --font-ibm-plex-mono: 'IBM Plex Mono', monospace;
   --radius: 1.4rem;
   --shadow-x: 0px;
   --shadow-y: 2px;
